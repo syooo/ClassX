@@ -28,6 +28,7 @@ exports['should provide inheritance'] = function (test) {
     test.ok(myEx2 instanceof MyClass2);
     test.ok(myEx2 instanceof MyClass);
     test.ok(myEx2 instanceof ObjectX);
+
     test.done()
 };
 
@@ -55,4 +56,71 @@ exports['should provide the _super property, which calls method of parent class'
     test.ok(childMethodInvoked);
 
     test.done();
-}
+};
+
+exports['should invoke _prop and _init method while initialization'] = function (test) {
+    var propsInvoked = false,
+        initInvoked = false,
+        initInvokedBeforeProp;
+    var MyClass = ObjectX.extend({
+        _props: function () {
+            this._super();
+
+            propsInvoked = true;
+            initInvokedBeforeProp = initInvoked;
+        },
+        _init: function () {
+            this._super();
+
+            initInvoked = true;
+        }
+    });
+    var myEx = new MyClass;
+    test.ok(propsInvoked);
+    test.ok(initInvoked);
+    test.ok(!initInvokedBeforeProp);
+
+    test.done();
+};
+
+exports['_init and _props methods should contain a call to _super method'] = function (test) {
+    test.throws(function () {
+        ObjectX.extend({
+            _init: function () {
+
+            }
+        });
+    });
+    test.throws(function () {
+        ObjectX.extend({
+            _props: function () {
+
+            }
+        });
+    });
+
+    test.done();
+};
+
+exports['options passed to constructor should be accessible by `_options` property'] = function (test) {
+    var options;
+    var MyClass = ObjectX.extend({
+        _props: function () {
+            this._super();
+
+            options = this._options;
+        }
+    });
+
+    new MyClass({
+        a: true
+    });
+    test.deepEqual(options, {
+        a: true
+    });
+
+    new MyClass;
+    test.deepEqual(options, {});
+
+    test.done();
+};
