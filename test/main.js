@@ -1,5 +1,4 @@
 var ObjectX = require('../ObjectX');
-ObjectX = ObjectX.ObjectX;
 
 exports['should provide inheritance'] = function (test) {
     var MyClass;
