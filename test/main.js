@@ -1,9 +1,9 @@
-var ObjectX = require('../ObjectX');
+var ClassX = require('../ClassX');
 
 exports['should provide inheritance'] = function (test) {
     var MyClass;
     test.doesNotThrow(function () {
-        MyClass = ObjectX.extend({});
+        MyClass = ClassX.extend({});
     });
 
     test.ok(typeof MyClass === 'function');
@@ -13,7 +13,7 @@ exports['should provide inheritance'] = function (test) {
         myEx = new MyClass;
     });
     test.ok(myEx instanceof MyClass);
-    test.ok(myEx instanceof ObjectX);
+    test.ok(myEx instanceof ClassX);
 
     var MyClass2;
     test.doesNotThrow(function () {
@@ -26,7 +26,7 @@ exports['should provide inheritance'] = function (test) {
     });
     test.ok(myEx2 instanceof MyClass2);
     test.ok(myEx2 instanceof MyClass);
-    test.ok(myEx2 instanceof ObjectX);
+    test.ok(myEx2 instanceof ClassX);
 
     test.done()
 };
@@ -35,7 +35,7 @@ exports['should provide the _super property, which calls method of parent class'
     var parentMethodInvoked = false,
         childMethodInvoked = false;
 
-    var MyClass = ObjectX.extend({
+    var MyClass = ClassX.extend({
         m: function () {
             parentMethodInvoked = true;
         }
@@ -61,7 +61,7 @@ exports['should invoke _prop and _init method while initialization'] = function 
     var propsInvoked = false,
         initInvoked = false,
         initInvokedBeforeProp;
-    var MyClass = ObjectX.extend({
+    var MyClass = ClassX.extend({
         _props: function () {
             this._super();
 
@@ -84,14 +84,14 @@ exports['should invoke _prop and _init method while initialization'] = function 
 
 exports['_init and _props methods should contain a call to _super method'] = function (test) {
     test.throws(function () {
-        ObjectX.extend({
+        ClassX.extend({
             _init: function () {
 
             }
         });
     });
     test.throws(function () {
-        ObjectX.extend({
+        ClassX.extend({
             _props: function () {
 
             }
@@ -103,7 +103,7 @@ exports['_init and _props methods should contain a call to _super method'] = fun
 
 exports['options passed to constructor should be accessible by `_options` property'] = function (test) {
     var options;
-    var MyClass = ObjectX.extend({
+    var MyClass = ClassX.extend({
         _props: function () {
             this._super();
 

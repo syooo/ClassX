@@ -1,4 +1,4 @@
-ObjectX
+ClassX
 =======
 
 Basic module to work with js wia sugar
@@ -6,7 +6,7 @@ Basic module to work with js wia sugar
 
 Usage
 -----
-    var HelloWorldClass = ObjectX.extend({
+    var HelloWorldClass = ClassX.extend({
         helloWorld: function () {
             console.log('helloWorld');
         }

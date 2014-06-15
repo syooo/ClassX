@@ -13,7 +13,7 @@
         module.exports = factory();
     } else {
         // Browser globals (root is window)
-        root.ObjectX = factory();
+        root.ClassX = factory();
     }
 }(this, function () {
 
@@ -21,9 +21,9 @@
 
     /**
      * Base class that give us extend functionality
-     * @class ObjectX
+     * @class ClassX
      */
-    var ObjectX = function (options) {
+    var ClassX = function (options) {
         this._options = options || {};
 
         this._props();
@@ -35,7 +35,7 @@
      * do not make a logic here, this is just for properties declaration
      * @protected
      */
-    ObjectX.prototype._props = function () {
+    ClassX.prototype._props = function () {
 
     };
 
@@ -43,16 +43,16 @@
      * @constructor
      * @protected
      */
-    ObjectX.prototype._init = function () {
+    ClassX.prototype._init = function () {
 
     };
 
-    ObjectX.extend = function (properties) {
+    ClassX.extend = function (properties) {
         var _super = this.prototype,
             superRE = /_super/;
 
         var ChildClass = function () {
-            ObjectX.apply(this, arguments);
+            ClassX.apply(this, arguments);
         };
 
         ChildClass.prototype = Object.create(_super);
@@ -92,6 +92,6 @@
         return ChildClass;
     };
 
-    return ObjectX;
+    return ClassX;
 }));
 
