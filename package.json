@@ -1,0 +1,30 @@
+{
+    "name": "classx",
+    "version": "0.1.2",
+    "description": "Basic class that provide extend and _super functionality",
+    "author": "syooo <syooo@mail.ru>",
+    "contributors": [{
+        "name": "Andrey Balakirev",
+        "email": "balakirev.andrey@gmail.com"
+    }],
+    "scripts": {
+        "test": "./node_modules/.bin/nodeunit"
+    },
+    "devDependencies": {
+        "nodeunit": "~0.9.0"
+    },
+    "main": "ClassX.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/syooo/ClassX"
+    },
+    "bugs": {
+        "url": "https://github.com/syooo/ClassX/issues"
+    },
+    "keywords": [
+        "extend",
+        "_super",
+        "super"
+    ],
+    "license": "GPL-2.0"
+}
