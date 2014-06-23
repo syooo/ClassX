@@ -1,7 +1,7 @@
 {
     "name": "classx",
-    "version": "0.1.2",
-    "description": "Basic class that provide extend and _super functionality",
+    "version": "0.1.3",
+    "description": "Basic module that provide extend and _super functionality",
     "author": "syooo <syooo@mail.ru>",
     "contributors": [{
         "name": "Andrey Balakirev",

@@ -57,18 +57,18 @@ exports['should provide the _super property, which calls method of parent class'
     test.done();
 };
 
-exports['should invoke _prop and _init method while initialization'] = function (test) {
+exports['should invoke _defineProperties and _initialize method while initialization'] = function (test) {
     var propsInvoked = false,
         initInvoked = false,
         initInvokedBeforeProp;
     var MyClass = ClassX.extend({
-        _props: function () {
+        _defineProperties: function () {
             this._super();
 
             propsInvoked = true;
             initInvokedBeforeProp = initInvoked;
         },
-        _init: function () {
+        _initialize: function () {
             this._super();
 
             initInvoked = true;
@@ -82,17 +82,17 @@ exports['should invoke _prop and _init method while initialization'] = function 
     test.done();
 };
 
-exports['_init and _props methods should contain a call to _super method'] = function (test) {
+exports['_initialize and _defineProperties methods should contain a call to _super method'] = function (test) {
     test.throws(function () {
         ClassX.extend({
-            _init: function () {
+            _initialize: function () {
 
             }
         });
     });
     test.throws(function () {
         ClassX.extend({
-            _props: function () {
+            _defineProperties: function () {
 
             }
         });
@@ -104,7 +104,7 @@ exports['_init and _props methods should contain a call to _super method'] = fun
 exports['options passed to constructor should be accessible by `_options` property'] = function (test) {
     var options;
     var MyClass = ClassX.extend({
-        _props: function () {
+        _defineProperties: function () {
             this._super();
 
             options = this._options;
