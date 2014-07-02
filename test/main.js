@@ -14,6 +14,7 @@ exports['should provide inheritance'] = function (test) {
     });
     test.ok(myEx instanceof MyClass);
     test.ok(myEx instanceof ClassX);
+    test.ok(myEx.constructor === MyClass);
 
     var MyClass2;
     test.doesNotThrow(function () {
@@ -27,6 +28,7 @@ exports['should provide inheritance'] = function (test) {
     test.ok(myEx2 instanceof MyClass2);
     test.ok(myEx2 instanceof MyClass);
     test.ok(myEx2 instanceof ClassX);
+    test.ok(myEx2.constructor === MyClass2);
 
     test.done()
 };

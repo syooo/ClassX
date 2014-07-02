@@ -41,6 +41,10 @@ var Note = ClassX.extend({
     }
 });
 
+/**
+ * @class PrivateNote
+ * @extends Note
+ */
 var PrivateNote = Note.extend({
 
     /**

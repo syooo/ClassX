@@ -102,6 +102,7 @@
         };
 
         ChildClass.prototype = Object.create(_super);
+        ChildClass.prototype.constructor = ChildClass;
 
         // `extend` isn't part of prototype! We can invoke `extend` only from constructor, not instance
         ChildClass.extend = this.extend;
