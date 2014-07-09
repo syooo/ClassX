@@ -3,7 +3,7 @@ ClassX
 
 ![travis-ci.org](https://travis-ci.org/syooo/ClassX.svg)
 
-Basic module that provide extend and _super functionality.
+Basic module that provide Backbone like extend and _super functionality.
 
 - [x] extend - you can extend any of your class
 - [x] _super - easy invoke parent's methods
@@ -71,5 +71,5 @@ npm install objectx
 
 ##Run tests
 ```
-nodeunit
+mocha --reporter spec
 ```
