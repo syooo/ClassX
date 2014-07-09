@@ -1,6 +1,6 @@
 {
     "name": "classx",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Basic module that provide Backbone like extend and _super functionality",
     "author": "syooo <syooo@mail.ru>",
     "contributors": [{

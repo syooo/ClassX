@@ -88,11 +88,11 @@
     };
 
     /**
-     *
-     * @param {Object} properties
+     * @param {Object} properties - variables of object
+     * @param {Object} staticProperties - variables of class
      * @returns {ClassX}
      */
-    ClassX.extend = function (properties) {
+    ClassX.extend = function (properties, staticProperties) {
         var _super = this.prototype,
             superRE = /_super/;
 
@@ -104,8 +104,19 @@
         ChildClass.prototype = Object.create(_super);
         ChildClass.prototype.constructor = ChildClass;
 
-        // `extend` isn't part of prototype! We can invoke `extend` only from constructor, not instance
-        ChildClass.extend = this.extend;
+        // Add parent static properties to child
+        for (var parentStaticProperty in this) {
+            if (this.hasOwnProperty(parentStaticProperty)) {
+                ChildClass[parentStaticProperty] = this[parentStaticProperty];
+            }
+        }
+
+        // Add static properties to child from options
+        for (var newStaticProperty in staticProperties) {
+            if (staticProperties.hasOwnProperty(newStaticProperty)) {
+                ChildClass[newStaticProperty] = staticProperties[newStaticProperty];
+            }
+        }
 
         for (var key in properties) {
             if (!properties.hasOwnProperty(key)) {

@@ -34,6 +34,22 @@ describe('Extend tests', function () {
         assert.ok(myEx2.constructor === MyClass2);
     });
 
+    it('should inheritance static properties', function () {
+        var MyClass = ClassX.extend(null, {
+            nick: 'Alex'
+        });
+
+        assert.equal(MyClass.nick, 'Alex');
+
+        var MyClass1 = MyClass.extend({});
+        assert.equal(MyClass1.nick, 'Alex');
+
+        var MyClass2 = MyClass1.extend(null, {
+            nick: 'Jill'
+        });
+        assert.equal(MyClass2.nick, 'Jill');
+    });
+
     it('should provide the _super property, which calls method of parent class', function () {
         var parentMethodInvoked = false,
             childMethodInvoked = false;
@@ -57,7 +73,6 @@ describe('Extend tests', function () {
         assert.ok(parentMethodInvoked);
         assert.ok(childMethodInvoked);
     });
-
 
     it('should invoke _prop and _initialize method while initialization', function () {
         var propsInvoked = false,
@@ -85,12 +100,14 @@ describe('Extend tests', function () {
     it('_initialize and _defineProperties methods should contain a call to _super method', function () {
         assert.throws(function () {
             ClassX.extend({
-                _initialize: function () {}
+                _initialize: function () {
+                }
             });
         });
         assert.throws(function () {
             ClassX.extend({
-                _defineProperties: function () {}
+                _defineProperties: function () {
+                }
             });
         });
     });
