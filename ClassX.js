@@ -154,5 +154,35 @@
         return ChildClass;
     };
 
+    /**
+     * @param {Object} mixin
+     * @returns {ClassX}
+     */
+    ClassX.mix = function (mixin) {
+        var Class = this;
+
+        Array.prototype.forEach.call(arguments, function (mixin) {
+
+            /**
+             * Is object?
+             * @see _.isObject
+             * @see http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.1
+             */
+            if (mixin !== Object(mixin)) {
+                throw new Error('Mixin must be an object');
+            }
+
+            if (Class.mixed && Class.mixed.indexOf(mixin) != -1) {
+                return;
+            }
+
+            Class = Class.extend(mixin, {
+                mixed: Class.mixed ? Class.mixed.push(mixin) : [mixin]
+            });
+        });
+
+        return Class;
+    };
+
     return ClassX;
 }));

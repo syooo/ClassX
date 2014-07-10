@@ -3,14 +3,15 @@ ClassX
 
 ![travis-ci.org](https://travis-ci.org/syooo/ClassX.svg)
 
-Basic module that provide Backbone like extend and _super functionality.
+Basic module that provide Backbone like extend with _super functionality. Also mixins.
 
 - [x] extend - you can extend any of your class
 - [x] _super - easy invoke parent's methods
-- [ ] mixins - create mixins and mix it into any of ur class (In progress)
+- [x] mixins - mix any object to your class
 
 
 ##Usage
+####Extend
 ```javascript
 /**
  * @class Note
@@ -60,6 +61,37 @@ var PrivateNote = Note.extend({
 
 var note = new Note({dateCreation: new Date(1991)}); // This note was created ...
 var secretNote = new PrivateNote(); // This note was created ... No one can see this.
+```
+
+####Mixins
+Mixins are common objects that you can mix into any of your class.
+```javascript
+/**
+ * @mixin WithEncryption
+ */
+var WithEncryption = {
+    encrypt: function () {
+        console.log('encrypted!');
+    }
+}
+
+/**
+ * @class ClassWithEncryption
+ * @mixes WithEncryption
+ */
+var ClassWithEncryption = ClassX.mix(WithEncryption).extend({
+    /**
+     * @constructor
+     * @protected
+     */
+    _initialize: function() {
+        this._super();
+
+        this.encrypt();
+    }
+});
+
+var instance = new ClassWithEncryption(); // encrypted!
 
 ```
 

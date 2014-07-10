@@ -1,7 +1,7 @@
 {
     "name": "classx",
-    "version": "0.1.6",
-    "description": "Basic module that provide Backbone like extend and _super functionality",
+    "version": "0.2.0",
+    "description": "Basic module that provide Backbone like extend with _super functionality. Also mixins.",
     "author": "syooo <syooo@mail.ru>",
     "contributors": [{
         "name": "Andrey Balakirev",
@@ -24,7 +24,10 @@
     "keywords": [
         "extend",
         "_super",
-        "super"
+        "super",
+        "mix",
+        "mixin",
+        "mixins"
     ],
     "license": "GPL-2.0"
 }
